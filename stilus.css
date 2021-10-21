@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+body{background-color: lightgrey;}
+
+main{
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+    background-color: rgb(155, 202, 204);
+    text-align: center;
+}
+
+article{
+    display: grid;
+    grid-template-columns:  50px 50px 50px 50px 50px 50px;
+    grid-template-rows: 50px 50px 50px 50px 50px 50px;
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+}
+
+article div{
+    background: lightyellow;
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+footer{margin-top: 10px;}
