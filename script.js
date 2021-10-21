@@ -1,32 +1,49 @@
 $(function() {
-		/* if (id === 'harom') {
-			hany = 3;
-      console.log(hany);
-		} else if (id === 'negy') {
-			hany = 4;
-      console.log(hany);
-		} else if (id === 'ot') {
-			hany = 5;
-      console.log(hany);
-		} else if (id === 'hat') {
-			hany = 6;
-		} */
-	
-    $(".multi-button button").click(()=>{
-      var id=$(this).attr('id');
-      console.log(id);
-      if (id === '3') {
-        hany = 5;
-        console.log(hany);
-      }
-    });
-
 	//szülöelem és a sablon elem meghatározása
 	const szuloElem = $('article');
 	const sablonElem = $('.lampa');
 	const hany = 3;
 	const meret = hany * hany;
 	const lampaTomb = [];
+	var szam;
+
+	/* $('#harom').on('click', () => {
+		szam = 3;
+		console.log(szam);
+		szuloElem.empty();
+		palya(szam * szam);
+		szuloElem.css('grid-template-columns', '1fr 1fr 1fr');
+		szuloElem.css('grid-template-rows', '1fr 1fr 1fr');
+		szuloElem.css('width', '162px');
+	});
+	$('#negy').on('click', () => {
+		szam = 4;
+		console.log(szam);
+		szuloElem.empty();
+		palya(szam * szam);
+		szuloElem.css('grid-template-columns', '1fr 1fr 1fr 1fr');
+		szuloElem.css('grid-template-rows', '1fr 1fr 1fr 1fr');
+		szuloElem.css('width', '216px');
+    hany=4;
+	});
+	$('#ot').on('click', () => {
+		szam = 5;
+		console.log(szam);
+		szuloElem.empty();
+		palya(szam * szam);
+		szuloElem.css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr');
+		szuloElem.css('grid-template-rows', '1fr 1fr 1fr 1fr 1fr');
+		szuloElem.css('width', '270px');
+	});
+	$('#hat').on('click', () => {
+		szam = 6;
+		console.log(szam);
+		szuloElem.empty();
+		palya(szam * szam);
+		szuloElem.css('grid-template-columns', '1fr 1fr 1fr 1fr 1fr 1fr');
+		szuloElem.css('grid-template-rows', '1fr 1fr 1fr 1fr 1fr 1fr');
+		szuloElem.css('width', '324px');
+	}); */
 
 	palya();
 	function palya() {
@@ -45,30 +62,30 @@ $(function() {
 
 	$(window).on('lampaKattintas', (event) => {
 		console.log(event.detail);
-		let index = Number(event.detail.id);
-		if (index % hany !== 0) {
-			lampaTomb[index - 1].fordit();
+		let id = Number(event.detail.index);
+		if (id % hany !== 0) {
+			lampaTomb[id - 1].fordit();
 		}
-		if (index % hany !== hany - 1) {
-			lampaTomb[index + 1].fordit();
+		if (id % hany !== hany - 1) {
+			lampaTomb[id + 1].fordit();
 		}
-		if (index >= hany) {
-			lampaTomb[index - hany].fordit();
+		if (id >= hany) {
+			lampaTomb[id - hany].fordit();
 		}
-		if (index <= meret - hany - 1) {
-			lampaTomb[index + hany].fordit();
+		if (id <= meret - hany - 1) {
+			lampaTomb[id + hany].fordit();
 		}
-		var szam = 0;
+		var db = 0;
 		for (let i = 0; i < lampaTomb.length; i++) {
 			if (lampaTomb[i].allapot == true) {
-				szam++;
+				db++;
 			}
 		}
-		if (szam > meret - 1) {
+		if (db > meret - 1) {
 			szuloElem.empty();
 			$('section').append("<h1>You won!!!</h1><br><input type='submit' value='NewGame' id='NewGame'>");
 			$('#NewGame').on('click', () => {
-				palya();
+				//palya();
 			});
 		}
 	});

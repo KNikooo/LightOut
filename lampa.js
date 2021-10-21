@@ -1,7 +1,7 @@
 class Lampa {
-  constructor(elem, id) {
+  constructor(elem, index) {
     this.elem = elem;
-    this.id=id;
+    this.index=index;
     this.allapot = false;
     this.setSzin();
     this.elem.on("click", () => {
